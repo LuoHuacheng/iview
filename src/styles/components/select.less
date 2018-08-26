@@ -20,10 +20,14 @@
         cursor: pointer;
         position: relative;
 
-        background-color: #fff;
+        background-color: #fafafa;
         border-radius: @btn-border-radius;
         border: 1px solid @border-color-base;
         transition: all @transition-time @ease-in-out;
+
+        &:focus {
+            background-color: #fff;
+        }
 
         &:hover, &-focused {
             .hover();
@@ -202,23 +206,23 @@
     }
 
     &-multiple .@{css-prefix}tag{
-        height: 24px;
-        line-height: 22px;
+        height: @input-height-base - 8px;
+        line-height: @input-height-base - 8px;
         margin: 3px 4px 3px 0;
     }
 
     &-large&-multiple .@{css-prefix}tag{
-        height: 28px;
-        line-height: 26px;
+        height: @input-height-large - 12px;
+        line-height: @input-height-large - 12px;
         font-size: @font-size-base;
     }
 
     &-small&-multiple .@{css-prefix}tag{
-        height: 17px;
-        line-height: 15px;
+        height: @input-height-small - 6px;
+        line-height: @input-height-small - 6px;
         font-size: @font-size-small;
         padding: 0 6px;
-        margin: 3px 4px 2px 0;
+        margin: 2px 4px 2px 0;
     }
 
     &-dropdown-list {
