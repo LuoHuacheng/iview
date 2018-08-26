@@ -45,11 +45,20 @@
             },
             name: {
                 type: String
-            }
+            },
+            controllable: {
+                type: Boolean,
+                default: false,
+            },
+            // loading: {
+            //     type: Boolean,
+            //     default: false
+            // }
         },
         data () {
             return {
-                currentValue: this.value
+                currentValue: this.value,
+                loading: false,
             };
         },
         computed: {
@@ -59,7 +68,8 @@
                     {
                         [`${prefixCls}-checked`]: this.currentValue === this.trueValue,
                         [`${prefixCls}-disabled`]: this.disabled,
-                        [`${prefixCls}-${this.size}`]: !!this.size
+                        [`${prefixCls}-${this.size}`]: !!this.size,
+                        [`${prefixCls}-loading`]: this.loading,
                     }
                 ];
             },
@@ -70,16 +80,20 @@
         methods: {
             toggle (event) {
                 event.preventDefault();
-                if (this.disabled) {
+                if (this.disabled || this.loading) {
                     return false;
                 }
+                if (this.controllable) {
+                    this.loading = true;
+                    this.$emit('on-change', this.loading);
+                } else {
+                    const checked = this.currentValue === this.trueValue ? this.falseValue : this.trueValue;
 
-                const checked = this.currentValue === this.trueValue ? this.falseValue : this.trueValue;
-
-                this.currentValue = checked;
-                this.$emit('input', checked);
-                this.$emit('on-change', checked);
-                this.dispatch('FormItem', 'on-form-change', checked);
+                    this.currentValue = checked;
+                    this.$emit('input', checked, event);
+                    this.$emit('on-change', checked, event);
+                    this.dispatch('FormItem', 'on-form-change', checked, event);
+                }
             }
         },
         watch: {
