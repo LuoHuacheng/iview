@@ -5,11 +5,16 @@
         <Button type="ghost">Ghost</Button>
         <Button type="dashed">Dashed</Button>
         <Button type="text">Text</Button>
+        <Button type="link">Link</Button>
         <br><br>
         <Button type="info">Info</Button>
         <Button type="success">Success</Button>
         <Button type="warning">Warning</Button>
         <Button type="error">Error</Button>
+        <br><br>
+        <Button type="success">Success</Button>
+        <Button type="success" size="large">Success</Button>
+        <Button type="success" size="small">Success</Button>
         <br><br>
         <Button type="primary" shape="circle" icon="ios-search"></Button>
         <Button type="primary" icon="ios-search">Search</Button>
@@ -35,6 +40,9 @@
         <br>
         <Button type="text">Text</Button>
         <Button type="text" disabled>Text(Disabled)</Button>
+        <br>
+        <Button type="link">Link</Button>
+        <Button type="link" disabled>Link(Disabled)</Button>
         <br><br>
 
         <br><br>

@@ -1,6 +1,6 @@
 <template>
     <div class="demo-avatar">
-        <Avatar :style="{background: color}">{{ user }}</Avatar>
+        <Avatar :style="{background: color}" size="large">{{ user }}</Avatar>
         <Button size="small" @click="handleChange">Change</Button>
     </div>
 </template>
