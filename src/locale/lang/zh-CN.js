@@ -2,7 +2,7 @@ import setLang from '../lang';
 
 const lang = {
     i: {
-        locale: 'zh-CN',
+        locale: 'zh',
         select: {
             placeholder: '请选择',
             noMatch: '无匹配数据',
