@@ -48,6 +48,8 @@
             :readonly="readonly"
             :name="name"
             :value="currentValue"
+            :min="min"
+            :max="max"
             :autofocus="autofocus"
             @keyup.enter="handleEnter"
             @keyup="handleKeyup"
@@ -72,7 +74,7 @@
         props: {
             type: {
                 validator (value) {
-                    return oneOf(value, ['text', 'textarea', 'password', 'url', 'email', 'date']);
+                    return oneOf(value, ['text', 'textarea', 'password', 'url', 'email', 'date', 'number']);
                 },
                 default: 'text'
             },
@@ -90,6 +92,12 @@
                 default: ''
             },
             maxlength: {
+                type: Number
+            },
+            min: {
+                type: Number
+            },
+            max: {
                 type: Number
             },
             disabled: {
