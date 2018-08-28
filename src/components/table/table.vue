@@ -29,7 +29,7 @@
                 <table cellspacing="0" cellpadding="0" border="0">
                     <tbody>
                         <tr>
-                            <td :style="{'height':bodyStyle.height,'width':`${this.headerWidth}px`}">
+                            <td :style="{'height':bodyStyle.minHeight,'width':`${this.headerWidth}px`}">
                                 <span v-html="localeNoDataText" v-if="!data || data.length === 0"></span>
                                 <span v-html="localeNoFilteredDataText" v-else></span>
                             </td>
@@ -137,6 +137,10 @@
             },
             height: {
                 type: [Number, String]
+            },
+            minHeight: {
+                type: [Number, String],
+                default: 450
             },
             stripe: {
                 type: Boolean,
@@ -254,6 +258,10 @@
                     const height = parseInt(this.height);
                     style.height = `${height}px`;
                 }
+                if (this.minHeight) {
+                    const minHeight = parseInt(this.minHeight);
+                    style.minHeight = `${minHeight}px`;
+                }
                 if (this.width) style.width = `${this.width}px`;
                 return style;
             },
@@ -315,7 +323,7 @@
                 let style = {};
                 if (this.bodyHeight !== 0) {
                     const height = this.bodyHeight;
-                    style.height = `${height}px`;
+                    style.minHeight = `${height}px`;
                 }
                 return style;
             },
@@ -551,12 +559,17 @@
             },
             
             fixedHeader () {
+                const titleHeight = parseInt(getStyle(this.$refs.title, 'height')) || 0;
+                const headerHeight = parseInt(getStyle(this.$refs.header, 'height')) || 0;
+                const footerHeight = parseInt(getStyle(this.$refs.footer, 'height')) || 0;
                 if (this.height) {
                     this.$nextTick(() => {
-                        const titleHeight = parseInt(getStyle(this.$refs.title, 'height')) || 0;
-                        const headerHeight = parseInt(getStyle(this.$refs.header, 'height')) || 0;
-                        const footerHeight = parseInt(getStyle(this.$refs.footer, 'height')) || 0;
                         this.bodyHeight = this.height - titleHeight - headerHeight - footerHeight;
+                        this.$nextTick(()=>this.fixedBody());
+                    });
+                } else if (this.minHeight) {
+                    this.$nextTick(() => {
+                        this.bodyHeight = this.minHeight - titleHeight - headerHeight - footerHeight;
                         this.$nextTick(()=>this.fixedBody());
                     });
                 } else {

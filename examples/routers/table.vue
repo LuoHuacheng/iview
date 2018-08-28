@@ -66,7 +66,7 @@ table {
                         <!-- <Table border  :columns="columns1" height="500" :data="data1"></Table> -->
                         <!-- <br> -->
                         <!-- <Table border :columns="columns5" :data="data5"></Table> -->
-                        <Table border :columns="columns8"  height="240" :data="data7"></Table>
+                        <Table border :columns="columns8" min-height="400" :data="data7"></Table>
                     </Content>
                     <Footer>sdfsdsdfsdfs</Footer>
                 </Layout>
@@ -438,6 +438,7 @@ table {
                         width:200,
                     }
                 ],
+                data78: [],
                 data7: [
                     {
                         name: 'John Brown',
