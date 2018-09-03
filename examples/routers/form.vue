@@ -427,7 +427,7 @@
 
 
 <template>
-    <Form :model="formItem" :label-width="80">
+    <Form :model="formItem" label-position="top">
         <FormItem label="Input">
             <Input v-model="formItem.input" placeholder="Enter something..."></Input>
         </FormItem>

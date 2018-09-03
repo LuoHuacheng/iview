@@ -7,7 +7,7 @@
 </style>
 <template>
     <div>
-        <Row type='flex' justify='center'>
+        <!-- <Row type='flex' justify='center'>
             <i-col span='21' class="offset-header">
                 <Row type='flex' :gutter='16' justify='space-between'>
                     <i-col :order='25'>
@@ -147,6 +147,12 @@
                     </i-col>
                 </Row>
             </i-col>
+        </Row> -->
+        <Row>
+            <Col span="6">1</Col>
+            <Col span="6">2</Col>
+            <Col span="6">3</Col>
+            <Col span="6">4</Col>
         </Row>
     </div>
 </template>

@@ -1,7 +1,7 @@
 <style lang="less">
     @import "../src/styles/index.less";
 </style>
-<style lang="less" scoped>
+<style lang="less">
 nav {
     margin-bottom: 40px;
 
@@ -69,6 +69,7 @@ nav {
                 <li><router-link to="/cell">Cell</router-link></li>
             </ul>
         </nav>
+        <Button type="primary" @click="toggleDirection">切换方向</Button>
         <router-view></router-view>
     </div>
 </template>
@@ -86,7 +87,10 @@ nav {
 
         },
         methods: {
-
+            toggleDirection() {
+                const dir = document.body.dir;
+                document.body.dir = dir === 'rtl' ? 'ltr' : 'rtl';
+            }
         }
     }
 </script>

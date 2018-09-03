@@ -55,6 +55,7 @@
 
         
         <InputNumber v-model="valueNull" style="width: 200px" :min='0' :max='10000'  :precision='2' ></InputNumber>
+        <InputNumber v-model="valueNull" handler-hide style="width: 200px" :min='0' :max='10000'  :precision='2' ></InputNumber>
     </div>
 </template>
 <script>

@@ -1,8 +1,9 @@
 .select-item(@size-class, @item-class) {
     .@{item-class} {
         margin: 0;
-        line-height: normal;
-        padding: 7px 16px;
+        line-height: 24px;
+        padding: 6px 16px;
+        height: 36px;
         clear: both;
         color: @text-color;
         font-size: @font-size-small !important;
@@ -12,6 +13,8 @@
         transition: background @transition-time @ease-in-out;
 
         &:hover{
+            font-weight: bold;
+            color: @title-color;
             background: @background-color-select-hover;
         }
 

@@ -1,5 +1,6 @@
-.button-size(@padding; @font-size; @border-radius) {
+.button-size(@padding; @btn-width-base; @font-size; @border-radius) {
     padding: @padding;
+    min-width: @btn-width-base;
     font-size: @font-size;
     border-radius: @border-radius;
 }
@@ -91,7 +92,7 @@
     }
     &-large {
         & > .@{btnClassName} {
-            .button-size(@btn-padding-large; @btn-font-size-large; @btn-border-radius);
+            .button-size(@btn-padding-large; @btn-width-large; @btn-font-size-large; @btn-border-radius);
         }
     }
 
@@ -100,7 +101,7 @@
     }
     &-small {
         & > .@{btnClassName}{
-            .button-size(@btn-padding-small; @btn-font-size; @btn-border-radius-small);
+            .button-size(@btn-padding-small; @btn-width-small; @btn-font-size; @btn-border-radius-small);
             > .@{css-prefix-iconfont} {
                 font-size: @btn-font-size;
             }
@@ -137,9 +138,9 @@
     background-image: none;
     border: 1px solid transparent;
     white-space: nowrap;
-    line-height: @line-height-base;
+    line-height: 1;
     user-select: none;
-    .button-size(@btn-padding-base; @btn-font-size; @btn-border-radius);
+    .button-size(@btn-padding-base; @btn-width-base; @btn-font-size; @btn-border-radius);
     //transform: translate3d(0, 0, 0);
     //transition: all @transition-time linear;
     transition: color @transition-time linear, background-color @transition-time linear, border @transition-time linear, box-shadow @transition-time linear;
@@ -181,11 +182,11 @@
     }
 
     &-large {
-        .button-size(@btn-padding-large; @btn-font-size-large; @btn-border-radius);
+        .button-size(@btn-padding-large; @btn-width-large; @btn-font-size-large; @btn-border-radius);
     }
 
     &-small {
-        .button-size(@btn-padding-small; @btn-font-size; @btn-border-radius-small);
+        .button-size(@btn-padding-small; @btn-width-small; @btn-font-size-small; @btn-border-radius-small);
     }
 
     &-icon-only{
@@ -290,6 +291,41 @@
     .active-btn-color(@primary-color);
 }
 
+// Link
+.btn-link() {
+    width: auto;
+    min-width: auto;
+    padding-left: 2px;
+    padding-right: 2px;
+    .button-variant(@primary-color, @btn-ghost-bg, transparent);
+    border-radius: 0;
+    // for disabled
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        &,
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+            .button-color(@btn-disable-color; @btn-ghost-bg; transparent);
+        }
+    }
+
+    &:hover
+        //&:focus
+    {
+        .button-color(tint(@primary-color, 20%); @btn-ghost-bg; transparent);
+        border-bottom-color: @primary-color;
+    }
+    &:active,
+    &.active {
+        .button-color(shade(@primary-color, 5%); @btn-ghost-bg; transparent);
+        border-bottom-color: @primary-color;
+    }
+    .active-btn-color(@primary-color);
+}
+
 // Color
 // for tabindex
 .active-btn-color(@color) {
@@ -312,6 +348,8 @@
 
 // Circle for Icon
 .btn-circle(@btnClassName: ivu-btn) {
+    width: auto;
+    min-width: auto;
     border-radius: @btn-circle-size;
 
     &.@{btnClassName}-large{
@@ -324,16 +362,16 @@
 
     &.@{btnClassName}-icon-only{
         .square(@btn-circle-size);
-        .button-size(0; @font-size-base + 2; 50%);
+        .button-size(0; @btn-width-base; @font-size-base + 2; 50%);
 
         &.@{btnClassName}-large{
             .square(@btn-circle-size-large);
-            .button-size(0; @btn-font-size-large + 2; 50%);
+            .button-size(0; @btn-width-large; @btn-font-size-large + 2; 50%);
         }
 
         &.@{btnClassName}-small{
             .square(@btn-circle-size-small);
-            .button-size(0; @font-size-base; 50%);
+            .button-size(0; @btn-width-small; @font-size-base; 50%);
         }
     }
 }

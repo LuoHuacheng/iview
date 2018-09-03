@@ -49,14 +49,19 @@
             name: {
                 type: String
             },
-            loading: {
+            controllable: {
                 type: Boolean,
-                default: false
-            }
+                default: false,
+            },
+            // loading: {
+            //     type: Boolean,
+            //     default: false
+            // }
         },
         data () {
             return {
-                currentValue: this.value
+                currentValue: this.value,
+                loading: false,
             };
         },
         computed: {
@@ -81,13 +86,17 @@
                 if (this.disabled || this.loading) {
                     return false;
                 }
+                if (this.controllable) {
+                    this.loading = true;
+                    this.$emit('on-change', this.loading);
+                } else {
+                    const checked = this.currentValue === this.trueValue ? this.falseValue : this.trueValue;
 
-                const checked = this.currentValue === this.trueValue ? this.falseValue : this.trueValue;
-
-                this.currentValue = checked;
-                this.$emit('input', checked);
-                this.$emit('on-change', checked);
-                this.dispatch('FormItem', 'on-form-change', checked);
+                    this.currentValue = checked;
+                    this.$emit('input', checked, event);
+                    this.$emit('on-change', checked, event);
+                    this.dispatch('FormItem', 'on-form-change', checked, event);
+                }
             }
         },
         watch: {

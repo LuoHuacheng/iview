@@ -1,6 +1,6 @@
 <template>
     <div :class="wrapClasses">
-        <div :class="handlerClasses">
+        <div :class="handlerClasses" v-if="!handlerHide">
             <a
                 @click="up"
                 @mousedown="preventDefault"
@@ -129,6 +129,10 @@
                 type: String,
                 default: ''
             },
+            handlerHide: {
+                type: Boolean,
+                default: false,
+            }
         },
         data () {
             return {

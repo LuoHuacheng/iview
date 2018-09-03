@@ -5,10 +5,11 @@
     border-color: @error-color;
 }
 
-.active(@color: @input-hover-border-color) {
-    border-color: tint(@color, 20%);
+.active(@border-color: @input-hover-border-color; @background-color: @body-background) {
     outline: 0;
-    box-shadow: 0 0 0 2px fade(@color, 20%);
+    border-color: tint(@border-color, 20%);
+    background-color: @background-color;
+    box-shadow: 0 0 0 2px fade(@border-color, 20%);
 }
 .active-error() {
     border-color: @error-color;
@@ -148,7 +149,7 @@
         border-color: transparent;
         background-color: transparent;
         color: inherit;
-        margin: -(@input-padding-vertical-base + 2) (-@input-padding-horizontal);
+        margin: -(@input-padding-vertical-base + 6) (-@input-padding-horizontal);
     }
 
     &-prepend,
@@ -176,13 +177,13 @@
         line-height: 1;
         color: @input-color;
         text-align: center;
-        background-color: @input-group-bg;
+        background-color: @input-bg;
         border: 1px solid @input-border-color;
         border-radius: @btn-border-radius;
 
         // Reset Select's style in addon
         .@{css-prefix}select {
-            margin: -(@input-padding-vertical-base + 1) (-@input-padding-horizontal);  // lesshint spaceAroundOperator: false
+            margin: -(@input-padding-vertical-base + 4) (-@input-padding-horizontal);  // lesshint spaceAroundOperator: false
 
             &-selection {
                 background-color: inherit;
@@ -211,12 +212,12 @@
         }
     }
 
-    &-prepend {
-        border-right: 0;
-    }
-    &-append {
-        border-left: 0;
-    }
+    // &-prepend {
+    //     border-right: 0;
+    // }
+    // &-append {
+    //     border-left: 0;
+    // }
 
     > .@{inputClass}:last-child,
     &-append

@@ -2,7 +2,7 @@ import setLang from '../lang';
 
 const lang = {
     i: {
-        locale: 'en-US',
+        locale: 'en',
         select: {
             placeholder: 'Select',
             noMatch: 'No matching data',

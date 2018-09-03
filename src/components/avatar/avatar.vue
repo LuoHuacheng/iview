@@ -92,10 +92,10 @@
             }
         },
         mounted () {
-            this.setScale();
+            // this.setScale();
         },
         updated () {
-            this.setScale();
+            // this.setScale();
         }
     };
 </script>

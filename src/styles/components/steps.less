@@ -1,5 +1,5 @@
 @steps-prefix-cls: ~"@{css-prefix}steps";
-@steps-wait-icon-color: #ccc;
+@steps-wait-icon-color: #afafaf;
 @steps-wait-title-color: #999;
 @steps-wait-description-color: @steps-wait-title-color;
 @steps-wait-tail-color: @border-color-split;
@@ -17,9 +17,9 @@
 
         &.@{steps-prefix-cls}-status-wait{
             .@{steps-prefix-cls}-head-inner {
-                background-color: #fff;
+                background-color: @steps-wait-icon-color;
                 > .@{steps-prefix-cls}-icon, span {
-                    color: @steps-wait-icon-color;
+                    color: #fff;
                 }
             }
             .@{steps-prefix-cls}-title {
@@ -34,8 +34,8 @@
         }
         &.@{steps-prefix-cls}-status-process {
             .@{steps-prefix-cls}-head-inner {
-                border-color: @primary-color;
-                background-color: @primary-color;
+                border-color: @success-color;
+                background-color: @success-color;
                 > .@{steps-prefix-cls}-icon, span {
                     color: #fff;
                 }
@@ -52,15 +52,15 @@
         }
         &.@{steps-prefix-cls}-status-finish {
             .@{steps-prefix-cls}-head-inner {
-                background-color: #fff;
-                border-color: @primary-color;
+                background-color: @success-color;
+                border-color: @success-color;
                 > .@{steps-prefix-cls}-icon, span {
-                    color: @primary-color;
+                    color: #fff;
                 }
             }
             .@{steps-prefix-cls}-tail > i:after {
                 width: 100%;
-                background: @primary-color;
+                background: @success-color;
                 transition: all @transition-time @ease-in-out;
                 opacity: 1;
             }
@@ -113,7 +113,7 @@
             }
             &.@{steps-prefix-cls}-status-process {
                 .@{steps-prefix-cls}-head-inner > .@{steps-prefix-cls}-icon {
-                    color: @primary-color;
+                    color: @success-color;
                 }
             }
         }
@@ -137,7 +137,6 @@
         width: 26px;
         height: 26px;
         line-height: 24px;
-        margin-right: 8px;
         text-align: center;
         border: 1px solid @steps-wait-icon-color;
         border-radius: 50%;
@@ -158,7 +157,6 @@
         }
     }
     .@{steps-prefix-cls}-main {
-        margin-top: 2.5px;
         display: inline;
     }
     .@{steps-prefix-cls}-custom .@{steps-prefix-cls}-title{
@@ -347,7 +345,7 @@
         padding-left: 35px;
     }
     .@{steps-prefix-cls}-item:not(:first-child) .@{steps-prefix-cls}-head {
-        padding-left: 10px;
-        margin-left: -10px;
+        margin: 0;
+        padding: 0;
     }
 }

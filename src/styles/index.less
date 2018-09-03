@@ -1,5 +1,183 @@
-@import "./custom";
-@import "./mixins/index";
-@import "./common/index";
-@import "./animation/index";
-@import "./components/index";
+@import './custom';
+@import './mixins/index';
+@import './common/index';
+@import './animation/index';
+@import './components/index';
+
+.text {
+    &-left {
+        text-align: left !important;
+    }
+    &-center {
+        text-align: center !important;
+    }
+    &-right {
+        text-align: right !important;
+    }
+    &-primary {
+        color: @primary-color !important;
+    }
+    &-disabled {
+        color: @subsidiary-color !important;
+    }
+    &-info {
+        color: @info-color !important;
+    }
+    &-success {
+        color: @success-color !important;
+    }
+    &-warning {
+        color: @warning-color !important;
+    }
+    &-error {
+        color: @error-color !important;
+    }
+    &-strong {
+        font-weight: bold !important;
+    }
+    &-large {
+        font-size: 1.5rem !important;
+    }
+    &-small {
+        font-size: 0.75rem !important;
+    }
+}
+
+.float {
+    &-left {
+        float: left;
+    }
+    &-right {
+        float: right;
+    }
+}
+
+body[dir='rtl'] {
+    .text {
+        &-left {
+            text-align: right !important;
+        }
+        &-right {
+            text-align: left !important;
+        }
+    }
+    .float {
+        &-left {
+            float: right;
+        }
+        &-right {
+            float: left;
+        }
+    }
+    .ivu-col-span-1,
+    .ivu-col-span-2,
+    .ivu-col-span-3,
+    .ivu-col-span-4,
+    .ivu-col-span-5,
+    .ivu-col-span-6,
+    .ivu-col-span-7,
+    .ivu-col-span-8,
+    .ivu-col-span-9,
+    .ivu-col-span-10,
+    .ivu-col-span-11,
+    .ivu-col-span-12,
+    .ivu-col-span-13,
+    .ivu-col-span-14,
+    .ivu-col-span-15,
+    .ivu-col-span-16,
+    .ivu-col-span-17,
+    .ivu-col-span-18,
+    .ivu-col-span-19,
+    .ivu-col-span-20,
+    .ivu-col-span-21,
+    .ivu-col-span-22,
+    .ivu-col-span-23,
+    .ivu-col-span-24 {
+        float: right;
+    }
+    .ivu-input-group-with-append .ivu-input,
+    .ivu-input-group-with-append.ivu-input-group-small .ivu-input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    .ivu-input-group > .ivu-input:last-child,
+    .ivu-input-group-append {
+        border-bottom-left-radius: 4px !important;
+        border-top-left-radius: 4px !important;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .ivu-input-group-with-prepend .ivu-input,
+    .ivu-input-group-with-prepend.ivu-input-group-small .ivu-input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    .ivu-input-group-prepend {
+        border-bottom-right-radius: 4px !important;
+        border-top-right-radius: 4px !important;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .ivu-form .ivu-form-item-label {
+        float: right;
+    }
+    .ivu-form-item-error {
+        .ivu-input-group > .ivu-input:last-child,
+        .ivu-input-group-append {
+            border-left: 1px solid #ed3f14;
+        }
+        .ivu-input-group-prepend {
+            border-right: 1px solid #ed3f14;
+        }
+    }
+    .ivu-form-item-error-tip {
+        right: 0;
+        left: auto;
+    }
+    .ivu-modal-close {
+        right: auto;
+        left: 30px;
+    }
+    .ivu-modal-footer,
+    .ivu-modal-confirm-footer {
+        text-align: left;
+        button + button {
+            margin-left: 0;
+            margin-right: 30px;
+        }
+    }
+    .ivu-radio {
+        margin-left: 6px;
+    }
+    .ivu-radio-group-button {
+        .ivu-radio-wrapper:first-child {
+            border-radius: 0 5px 5px 0;
+        }
+        .ivu-radio-wrapper:last-child {
+            border-radius: 5px 0 0 5px;
+        }
+    }
+
+    .ivu-icon-ios-arrow-right:before {
+        content: '\f3d2';
+    }
+    .ivu-icon-ios-arrow-left:before {
+        content: '\f3d3';
+    }
+    .ivu-tabs {
+        .ivu-tabs-nav {
+            float: right;
+            direction: ltr;
+        }
+        .ivu-tabs-tabpane {
+            display: block !important;
+        }
+        .ivu-tabs-content-animated {
+            direction: ltr;
+        }
+    }
+}
