@@ -97,7 +97,7 @@
                 if (this.timeout) clearTimeout(this.timeout);
                 this.timeout = setTimeout(() => {
                     this.currentVisible = true;
-                }, 250);
+                }, 100);
             },
             handleMouseleave () {
                 if (this.trigger === 'custom') return false;
