@@ -5,6 +5,10 @@
     position: relative;
     overflow: hidden;
 
+    &-item {
+        display: flex;
+    }
+
     &-link, &-link:hover, &-link:active{
         color: inherit;
     }
@@ -12,7 +16,7 @@
     &-icon{
         display: inline-block;
         margin-right: 4px;
-        font-size: @font-size-base;
+        font-size: @font-size-small;
         vertical-align: middle;
         &:empty{
             display: none
@@ -23,7 +27,7 @@
         vertical-align: middle;
     }
     &-title{
-        line-height: 24px;
+        line-height: 1em;
         font-size: @font-size-base;
     }
     &-label{
@@ -36,7 +40,7 @@
     }
 
     &-selected, &&-selected:hover{
-        background:  ~`colorPalette("@{primary-color}", 1)`;
+        background: ~`colorPalette("@{primary-color}", 1)`;
     }
 
     &-footer{

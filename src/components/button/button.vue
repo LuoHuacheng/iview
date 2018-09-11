@@ -38,7 +38,8 @@
             type: {
                 validator (value) {
                     return oneOf(value, ['primary', 'ghost', 'dashed', 'text', 'link', 'info', 'success', 'warning', 'error', 'default']);
-                }
+                },
+                default: 'default',
             },
             shape: {
                 validator (value) {
@@ -47,7 +48,7 @@
             },
             size: {
                 validator (value) {
-                    return oneOf(value, ['small', 'large', 'default']);
+                    return oneOf(value, ['xsmall', 'small', 'large', 'default']);
                 },
                 default () {
                     return !this.$IVIEW || this.$IVIEW.size === '' ? 'default' : this.$IVIEW.size;
