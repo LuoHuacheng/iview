@@ -13,19 +13,18 @@ let messageInstance;
 let name = 1;
 
 const iconTypes = {
-    'info': 'ios-information-circle',
-    'success': 'ios-checkmark-circle',
-    'warning': 'ios-alert',
-    'error': 'ios-close-circle',
+    'info': 'ios-information-circle-outline',
+    'success': 'ios-checkmark-circle-outline',
+    'warning': 'ios-alert-outline',
+    'error': 'ios-close-circle-outline',
     'loading': 'ios-loading'
 };
 
 function getMessageInstance () {
+    const top = typeof defaults.top === 'string' ? defaults.top : `${parseInt(defaults.top, 10)}px`;
     messageInstance = messageInstance || Notification.newInstance({
         prefixCls: prefixCls,
-        styles: {
-            top: `${defaults.top}px`
-        }
+        styles: { top }
     });
 
     return messageInstance;
