@@ -140,7 +140,7 @@
     }
     &-ghost&-dashed, &-ghost&-default{
         color: #fff;
-        border-color: #fff;
+        border: 0;
         &:hover{
             color: tint(@primary-color, 20%);
             border-color: tint(@primary-color, 20%);
@@ -185,7 +185,7 @@
     &-ghost&-default[disabled], &-ghost&-dashed[disabled], &-ghost&-primary[disabled], &-ghost&-info[disabled], &-ghost&-success[disabled], &-ghost&-warning[disabled], &-ghost&-error[disabled]{
         background: transparent;
         color: fade(#000, 25%);
-        border-color: @btn-disable-border;
+        border: 0;
     }
     &-ghost&-text[disabled]{
         background: transparent;
