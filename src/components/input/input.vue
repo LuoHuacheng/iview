@@ -144,7 +144,7 @@
             },
             autocomplete: {
                 validator (value) {
-                    return oneOf(value, ['on', 'off']);
+                    return oneOf(value, ['on', 'off', 'new-password']);
                 },
                 default: 'off'
             },
