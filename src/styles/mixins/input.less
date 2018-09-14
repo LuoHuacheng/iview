@@ -146,10 +146,17 @@
     &-prepend .@{css-prefix}btn,
     &-append .@{css-prefix}btn
     {
-        border-color: transparent;
-        background-color: transparent;
-        color: inherit;
+        border: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        color: @primary-color;
+        height: @input-height-base - 2;
         margin: -(@input-padding-vertical-base + 6) (-@input-padding-horizontal);
+        &.disabled,
+        &[disabled] {
+            color: @text-color;
+            background-color: @btn-disable-bg;
+        }
     }
 
     &-prepend,
