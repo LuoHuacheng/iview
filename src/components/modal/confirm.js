@@ -12,7 +12,7 @@ Modal.newInstance = properties => {
         mixins: [ Locale ],
         data: Object.assign({}, _props, {
             visible: false,
-            width: 416,
+            width: 500,
             title: '',
             body: '',
             iconType: '',
@@ -77,13 +77,13 @@ Modal.newInstance = properties => {
                         class: `${prefixCls}-head`
                     }
                 }, [
-                    h('div', {
-                        class: this.iconTypeCls
-                    }, [
-                        h('i', {
-                            class: this.iconNameCls
-                        })
-                    ]),
+                    // h('div', {
+                    //     class: this.iconTypeCls
+                    // }, [
+                    //     h('i', {
+                    //         class: this.iconNameCls
+                    //     })
+                    // ]),
                     h('div', {
                         attrs: {
                             class: `${prefixCls}-head-title`
