@@ -1,7 +1,6 @@
 <template>
     <ul :class="simpleWrapClasses" :style="styles" v-if="simple">
         <li
-            :title="t('i.page.prev')"
             :class="prevClasses"
             @click="prev">
             <a><i class="ivu-icon ivu-icon-ios-arrow-back"></i></a>
@@ -19,7 +18,6 @@
             {{ allPages }}
         </div>
         <li
-            :title="t('i.page.next')"
             :class="nextClasses"
             @click="next">
             <a><i class="ivu-icon ivu-icon-ios-arrow-forward"></i></a>
