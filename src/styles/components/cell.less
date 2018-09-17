@@ -7,6 +7,7 @@
 
     &-item {
         display: flex;
+        align-items: center;
     }
 
     &-link, &-link:hover, &-link:active{
@@ -14,7 +15,6 @@
     }
 
     &-icon{
-        display: inline-block;
         margin-right: 4px;
         font-size: @font-size-small;
         vertical-align: middle;
@@ -23,8 +23,8 @@
         }
     }
     &-main{
-        display: inline-block;
-        vertical-align: middle;
+        width: 80%;
+        white-space: normal;
     }
     &-title{
         font-size: @font-size-base;
@@ -43,11 +43,6 @@
     }
 
     &-footer{
-        display: inline-block;
-        position: absolute;
-        transform: translateY(-50%);
-        top: 50%;
-        right: 16px;
         color: @text-color;
     }
     &-with-link &-footer{
@@ -74,4 +69,4 @@
         background: shade(@selected-color, 10%);
     }
 }
-.select-item(@cell-prefix-cls, @cell-prefix-cls);
+.select-item(@cell-prefix-cls, @cell-prefix-cls, auto);
