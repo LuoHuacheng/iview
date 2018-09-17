@@ -1,13 +1,13 @@
 @tooltip-prefix-cls: ~"@{css-prefix}tooltip";
 @tooltip-arrow: ~"@{tooltip-prefix-cls}-arrow";
-@tooltip-max-width: 250px;
+@tooltip-max-width: 400px;
 @tooltip-arrow-width: 5px;
 @tooltip-distance: @tooltip-arrow-width - 1 + 4;
 
 @tooltip-arrow-width-light: 7px;
 @tooltip-distance-light: @tooltip-arrow-width-light - 1 + 4;
 @tooltip-arrow-outer-width-light: (@tooltip-arrow-width-light + 1);
-@tooltip-arrow-color: hsla(0,0%,85%,.5);
+@tooltip-arrow-color: #FCF5D9;
 
 .@{tooltip-prefix-cls} {
     display: inline-block;
@@ -30,7 +30,7 @@
             margin-left: -@tooltip-arrow-width-light;
             border-bottom-width: 0;
             border-top-width: @tooltip-arrow-width-light;
-            border-top-color: #fff;
+            border-top-color: @tooltip-arrow-color;
         }
 
         &[x-placement^="right"] .@{tooltip-arrow}:after {
@@ -39,7 +39,7 @@
             bottom: -@tooltip-arrow-width-light;
             border-left-width: 0;
             border-right-width: @tooltip-arrow-width-light;
-            border-right-color: #fff;
+            border-right-color: @tooltip-arrow-color;
         }
 
         &[x-placement^="bottom"] .@{tooltip-arrow}:after {
@@ -48,7 +48,7 @@
             margin-left: -@tooltip-arrow-width-light;
             border-top-width: 0;
             border-bottom-width: @tooltip-arrow-width-light;
-            border-bottom-color: #fff;
+            border-bottom-color: @tooltip-arrow-color;
         }
 
         &[x-placement^="left"] .@{tooltip-arrow}:after {
@@ -56,7 +56,7 @@
             right: 1px;
             border-right-width: 0;
             border-left-width: @tooltip-arrow-width-light;
-            border-left-color: #fff;
+            border-left-color: @tooltip-arrow-color;
             bottom: -@tooltip-arrow-width-light;
         }
     }
@@ -80,7 +80,7 @@
     }
 
     &-light &-inner{
-        background-color: #fff;
+        background-color: @tooltip-arrow-color;
         color: @text-color;
     }
 
