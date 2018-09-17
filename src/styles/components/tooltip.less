@@ -1,6 +1,6 @@
 @tooltip-prefix-cls: ~"@{css-prefix}tooltip";
 @tooltip-arrow: ~"@{tooltip-prefix-cls}-arrow";
-@tooltip-max-width: 400px;
+@tooltip-min-width: 240px;
 @tooltip-arrow-width: 5px;
 @tooltip-distance: @tooltip-arrow-width - 1 + 4;
 
@@ -62,9 +62,9 @@
     }
 
     &-inner{
-        max-width: @tooltip-max-width;
+        min-width: @tooltip-min-width;
         min-height: 34px;
-        padding: 8px 12px;
+        padding: 8px 16px;
         color: @tooltip-color;
         text-align: left;
         text-decoration: none;
