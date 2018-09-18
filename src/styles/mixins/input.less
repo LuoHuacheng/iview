@@ -146,17 +146,22 @@
     &-prepend .@{css-prefix}btn,
     &-append .@{css-prefix}btn
     {
-        border: none;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
         color: @primary-color;
-        height: @input-height-base - 2;
-        margin: -(@input-padding-vertical-base + 6) (-@input-padding-horizontal);
+        height: @input-height-base;
+        margin: -(@input-padding-vertical-base + 6) -(@input-padding-horizontal);
         &.disabled,
         &[disabled] {
             color: @text-color;
             background-color: @btn-disable-bg;
         }
+    }
+    &-prepend .@{css-prefix}btn {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    &-append .@{css-prefix}btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
     }
 
     &-prepend,
@@ -219,12 +224,12 @@
         }
     }
 
-    // &-prepend {
-    //     border-right: 0;
-    // }
-    // &-append {
-    //     border-left: 0;
-    // }
+    &-prepend {
+        border-right: 0;
+    }
+    &-append {
+        border-left: 0;
+    }
 
     > .@{inputClass}:last-child,
     &-append
