@@ -5,7 +5,7 @@
     border-color: @error-color;
 }
 
-.active(@border-color: @input-hover-border-color; @background-color: @body-background) {
+.active(@border-color: @input-hover-border-color; @background-color: #fff) {
     outline: 0;
     border-color: tint(@border-color, 20%);
     background-color: @background-color;
@@ -18,10 +18,10 @@
 }
 
 .disabled() {
-    background-color: @input-disabled-bg;
+    background-color: @border-color-split;
     opacity: 1;
     cursor: @cursor-disabled;
-    color: #ccc;
+    color: @subsidiary-color;
     &:hover {
         .hover(@input-border-color);
     }
@@ -147,7 +147,8 @@
     &-append .@{css-prefix}btn
     {
         color: @primary-color;
-        height: @input-height-base;
+        height: @input-height-base - 2;
+        line-height: @input-height-base / 4;
         margin: -(@input-padding-vertical-base + 6) -(@input-padding-horizontal);
         &.disabled,
         &[disabled] {
