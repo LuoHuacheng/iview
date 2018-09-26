@@ -110,7 +110,7 @@ const components = {
     Option: Option,
     OptionGroup,
     Page,
-    // Panel: Collapse.Panel,
+    Panel: Collapse.Panel,
     Poptip,
     Progress,
     Radio,
