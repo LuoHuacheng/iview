@@ -1,9 +1,9 @@
-.select-item(@size-class, @item-class) {
+.select-item(@size-class, @item-class, @item-height: 36px) {
     .@{item-class} {
         margin: 0;
         line-height: 24px;
         padding: 6px 16px;
-        height: 36px;
+        height: @item-height;
         clear: both;
         color: @text-color;
         font-size: @font-size-small !important;

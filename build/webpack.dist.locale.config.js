@@ -1,6 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
-const entry = require('./locale');
+// const entry = require('./locale');
+const entry = {
+    'ar-SA': './src/locale/lang/ar-SA',
+    'en-US': './src/locale/lang/en-US',
+    'zh-CN': './src/locale/lang/zh-CN',
+};
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 process.env.NODE_ENV = 'production';
@@ -14,7 +19,7 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 options: {
-                    sourceMap: true,
+                    sourceMap: false,
                 },
                 exclude: /node_modules/
             }
@@ -44,7 +49,7 @@ module.exports = {
         }),
         new UglifyJsPlugin({
             parallel: true,
-            sourceMap: true,
+            sourceMap: false,
         })
     ]
 };

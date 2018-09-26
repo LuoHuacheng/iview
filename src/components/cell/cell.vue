@@ -23,7 +23,7 @@
                 <slot name="label" slot="label"></slot>
             </CellItem>
         </div>
-        <div class="ivu-cell-arrow" v-if="to">
+        <div class="ivu-cell-arrow" v-if="to && !noArrow">
             <slot name="arrow">
                 <Icon type="ios-arrow-forward"></Icon>
             </slot>
@@ -53,6 +53,10 @@
             label: {
                 type: String,
                 default: ''
+            },
+            noArrow: {
+                type: Boolean,
+                default: false,
             },
             extra: {
                 type: String,
