@@ -1,9 +1,8 @@
 @collapse-prefix-cls: ~"@{css-prefix}collapse";
 
 .@{collapse-prefix-cls}{
-    background-color: @background-color-base;
+    background-color: #fff;
     border-radius: 3px;
-    border: 1px solid @border-color-base;
 
     &-simple{
         border-left: none;
@@ -13,7 +12,6 @@
     }
 
     & > &-item{
-        border-top: 1px solid @border-color-base;
         &:first-child {
             border-top: 0;
         }
@@ -21,24 +19,25 @@
         > .@{collapse-prefix-cls}-header{
             height: 38px;
             line-height: 38px;
-            padding-left: 16px;
-            color: #666;
+            color: #333;
             cursor: pointer;
             position: relative;
+            background: #fff;
             border-bottom: 1px solid transparent;
             transition: all @transition-time @ease-in-out;
 
             > i{
                 transition: transform @transition-time @ease-in-out;
-                margin-right: 14px;
+                margin-right: 6px;
+                color: #999
             }
         }
     }
     &  > &-item&-item-active > &-header{
-        border-bottom: 1px solid @border-color-base;
+
     }
     &-simple > &-item&-item-active > &-header{
-        border-bottom: 1px solid transparent;
+
     }
     &  > &-item&-item-active > &-header > i{
         transform: rotate(90deg);
@@ -49,7 +48,8 @@
         //overflow: hidden;
         color: @text-color;
         padding: 0 16px;
-        background-color: #fff;
+        margin: 0 16px;
+        background-color: #F8F8F8;
 
         & > &-box {
             padding-top: 16px;

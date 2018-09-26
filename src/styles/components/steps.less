@@ -34,8 +34,8 @@
         }
         &.@{steps-prefix-cls}-status-process {
             .@{steps-prefix-cls}-head-inner {
-                border-color: @success-color;
-                background-color: @success-color;
+                border-color: @primary-color;
+                background-color: @primary-color;
                 > .@{steps-prefix-cls}-icon, span {
                     color: #fff;
                 }
@@ -52,15 +52,15 @@
         }
         &.@{steps-prefix-cls}-status-finish {
             .@{steps-prefix-cls}-head-inner {
-                background-color: @success-color;
-                border-color: @success-color;
+                background-color: @primary-color;
+                border-color: @primary-color;
                 > .@{steps-prefix-cls}-icon, span {
                     color: #fff;
                 }
             }
             .@{steps-prefix-cls}-tail > i:after {
                 width: 100%;
-                background: @success-color;
+                background: @primary-color;
                 transition: all @transition-time @ease-in-out;
                 opacity: 1;
             }
@@ -74,10 +74,9 @@
 
         &.@{steps-prefix-cls}-status-error {
             .@{steps-prefix-cls}-head-inner {
-                background-color: #fff;
-                border-color: @error-color;
+                background-color: @error-color;
                 > .@{steps-prefix-cls}-icon {
-                    color: @error-color;
+                    color: #fff;
                 }
             }
             .@{steps-prefix-cls}-title {
@@ -113,7 +112,7 @@
             }
             &.@{steps-prefix-cls}-status-process {
                 .@{steps-prefix-cls}-head-inner > .@{steps-prefix-cls}-icon {
-                    color: @success-color;
+                    color: @primary-color;
                 }
             }
         }
@@ -129,16 +128,20 @@
         vertical-align: top;
     }
     .@{steps-prefix-cls}-head {
-        background: #fff;
+        top: 8px;
+        width: 22px;
+        height: 22px;
+        left: -8px;
+        background-color: #f3f3f3;
+        border-radius: 22px;
     }
 
     .@{steps-prefix-cls}-head-inner {
         display: block;
-        width: 26px;
-        height: 26px;
-        line-height: 24px;
+        width: 14px;
+        height: 14px;
+        line-height: 14px;
         text-align: center;
-        border: 1px solid @steps-wait-icon-color;
         border-radius: 50%;
         font-size: 14px;
         transition: background-color @transition-time @ease-in-out;
@@ -148,7 +151,9 @@
             position: relative;
 
             &.ivu-icon {
-                font-size: 24px;
+                font-size: 13px;
+                top: -1px;
+                font-weight: 600;
                 &-ios-checkmark-empty,
                 &-ios-close-empty {
                     font-weight: bold;
