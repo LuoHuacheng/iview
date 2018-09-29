@@ -125,7 +125,6 @@ a:hover {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -231,7 +230,6 @@ audio:not([controls]) {
 
 img {
   border-style: none;
-  vertical-align: text-top;
 }
 
 /**
@@ -269,6 +267,15 @@ textarea {
 button,
 input { /* 1 */
   overflow: visible;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 /**
