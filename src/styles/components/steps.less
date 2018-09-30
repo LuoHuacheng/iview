@@ -3,7 +3,8 @@
 @steps-wait-title-color: #999;
 @steps-wait-description-color: @steps-wait-title-color;
 @steps-wait-tail-color: @border-color-split;
-@steps-title-color: #666;
+@steps-title-color: #5C95EA;
+@steps-blue: #8EB8F7;
 
 .@{steps-prefix-cls} {
     font-size: 0;
@@ -34,13 +35,14 @@
         }
         &.@{steps-prefix-cls}-status-process {
             .@{steps-prefix-cls}-head-inner {
-                border-color: @primary-color;
-                background-color: @primary-color;
+                border-color: @steps-blue;
+                background-color: @steps-blue;
                 > .@{steps-prefix-cls}-icon, span {
                     color: #fff;
                 }
             }
             .@{steps-prefix-cls}-title {
+                font-weight: bold;
                 color: @steps-title-color;
             }
             .@{steps-prefix-cls}-content {
@@ -52,17 +54,18 @@
         }
         &.@{steps-prefix-cls}-status-finish {
             .@{steps-prefix-cls}-head-inner {
-                background-color: @primary-color;
-                border-color: @primary-color;
+                background-color: @steps-blue;
+                border-color: @steps-blue;
                 > .@{steps-prefix-cls}-icon, span {
                     color: #fff;
                 }
             }
             .@{steps-prefix-cls}-tail > i:after {
                 width: 100%;
-                background: @primary-color;
+                background: @steps-blue;
                 transition: all @transition-time @ease-in-out;
                 opacity: 1;
+                z-index: 9;
             }
             .@{steps-prefix-cls}-title {
                 color: @steps-wait-title-color;
@@ -112,7 +115,7 @@
             }
             &.@{steps-prefix-cls}-status-process {
                 .@{steps-prefix-cls}-head-inner > .@{steps-prefix-cls}-icon {
-                    color: @primary-color;
+                    color: @steps-blue;
                 }
             }
         }
@@ -173,7 +176,6 @@
         margin-bottom: 4px;
         padding-right: 10px;
         font-size: 14px;
-        font-weight: bold;
         color: #666;
         background: #fff;
 
@@ -240,7 +242,6 @@
             margin-top: 0;
             color: #666;
             font-size: 12px;
-            font-weight: bold;
         }
         .@{steps-prefix-cls}-content {
             font-size: 12px;
