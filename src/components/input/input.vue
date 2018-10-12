@@ -312,6 +312,11 @@
         watch: {
             value (val) {
                 this.setCurrentValue(val);
+            },
+            autofocus (val) {
+                if (val) {
+                    this.focus();
+                }
             }
         },
         mounted () {
