@@ -110,6 +110,9 @@
             };
         },
         computed: {
+            direction() {
+                return document.documentElement.dir;
+            },
             classes () {
                 return [
                     `${prefixCls}`,
@@ -138,7 +141,12 @@
             },
             contentStyle () {
                 const x = this.getTabIndex(this.activeKey);
-                const p = x === 0 ? '0%' : `-${x}00%`;
+                let p = '0%';
+                if (document.documentElement.dir === 'rtl') {
+                    p = x === 0 ? '0%' : `${x}00%`;
+                } else {
+                    p = x === 0 ? '0%' : `-${x}00%`;
+                }
 
                 let style = {};
                 if (x > -1) {
@@ -154,10 +162,11 @@
                     width: `${this.barWidth}px`
                 };
                 if (this.type === 'line') style.visibility = 'visible';
+                const offset = document.documentElement.dir === 'ltr' ? this.barOffset : -this.barOffset;
                 if (this.animated) {
-                    style.transform = `translate3d(${this.barOffset}px, 0px, 0px)`;
+                    style.transform = `translate3d(${offset}px, 0px, 0px)`;
                 } else {
-                    style.left = `${this.barOffset}px`;
+                    style.left = `${offset}px`;
                 }
 
                 return style;
