@@ -143,6 +143,11 @@
 
                 if (labelWidth || labelWidth === 0) {
                     style.marginLeft = `${labelWidth}px`;
+                    style.marginRight = 0;
+                    if (document.documentElement.dir === 'rtl') {
+                        style.marginLeft = 0;
+                        style.marginRight = `${labelWidth}px`;
+                    }
                 }
                 return style;
             }
