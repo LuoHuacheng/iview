@@ -66,7 +66,7 @@
             },
             theme: {
                 validator (value) {
-                    return oneOf(value, ['dark', 'light']);
+                    return oneOf(value, ['dark', 'light', 'warning']);
                 },
                 default: 'dark'
             },
