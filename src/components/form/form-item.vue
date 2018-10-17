@@ -137,19 +137,22 @@
                 }
                 return style;
             },
-            contentStyles () {
-                let style = {};
-                const labelWidth = this.labelWidth === 0 || this.labelWidth ? this.labelWidth : this.form.labelWidth;
+            contentStyles: {
+                cache: false,
+                get() {
+                    let style = {};
+                    const labelWidth = this.labelWidth === 0 || this.labelWidth ? this.labelWidth : this.form.labelWidth;
 
-                if (labelWidth || labelWidth === 0) {
-                    style.marginLeft = `${labelWidth}px`;
-                    style.marginRight = 0;
-                    if (document.documentElement.dir === 'rtl') {
-                        style.marginLeft = 0;
-                        style.marginRight = `${labelWidth}px`;
+                    if (labelWidth || labelWidth === 0) {
+                        style.marginLeft = `${labelWidth}px`;
+                        style.marginRight = 0;
+                        if (document.documentElement.dir === 'rtl') {
+                            style.marginLeft = 0;
+                            style.marginRight = `${labelWidth}px`;
+                        }
                     }
+                    return style;
                 }
-                return style;
             }
         },
         methods: {
