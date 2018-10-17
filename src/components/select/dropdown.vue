@@ -89,6 +89,9 @@
                 if(!leftOrRight){
                     this.popper.popper.style.transformOrigin = placementStart==='bottom' || ( placementStart !== 'top' && placementEnd === 'start') ? 'center top' : 'center bottom';
                 }
+                if (this.$parent.$options.name === 'iSelect') {
+                    this.popper.popper.style.left = '0';
+                }
             }
         },
         created () {
