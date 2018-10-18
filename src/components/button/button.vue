@@ -8,8 +8,8 @@
         @click.exact="handleClickLink($event, false)"
         @click.ctrl="handleClickLink($event, true)"
         @click.meta="handleClickLink($event, true)">
-        <Icon class="ivu-load-loop" type="ios-loading" v-if="loading"></Icon>
-        <Icon :type="icon" :custom="customIcon" v-if="(icon || customIcon) && !loading"></Icon>
+        <Icon class="ivu-load-loop" type="ios-loading" v-if="selfLoading"></Icon>
+        <Icon :type="icon" :custom="customIcon" v-if="(icon || customIcon) && !selfLoading"></Icon>
         <span v-if="showSlot" ref="slot"><slot></slot></span>
     </a>
     <button
@@ -18,8 +18,8 @@
         :class="classes"
         :disabled="disabled"
         @click="handleClickLink">
-        <Icon class="ivu-load-loop" type="ios-loading" v-if="loading"></Icon>
-        <Icon :type="icon" :custom="customIcon" v-if="(icon || customIcon) && !loading"></Icon>
+        <Icon class="ivu-load-loop" type="ios-loading" v-if="selfLoading"></Icon>
+        <Icon :type="icon" :custom="customIcon" v-if="(icon || customIcon) && !selfLoading"></Icon>
         <span v-if="showSlot" ref="slot"><slot></slot></span>
     </button>
 </template>
@@ -77,11 +77,15 @@
             ghost: {
                 type: Boolean,
                 default: false
+            },
+            func: {
+                type: Function
             }
         },
         data () {
             return {
-                showSlot: true
+                showSlot: true,
+                selfLoading: false,
             };
         },
         computed: {
@@ -93,8 +97,8 @@
                         [`${prefixCls}-long`]: this.long,
                         [`${prefixCls}-${this.shape}`]: !!this.shape,
                         [`${prefixCls}-${this.size}`]: this.size !== 'default',
-                        [`${prefixCls}-loading`]: this.loading != null && this.loading,
-                        [`${prefixCls}-icon-only`]: !this.showSlot && (!!this.icon || !!this.customIcon || this.loading),
+                        [`${prefixCls}-loading`]: this.selfLoading != null && this.selfLoading,
+                        [`${prefixCls}-icon-only`]: !this.showSlot && (!!this.icon || !!this.customIcon || this.selfLoading),
                         [`${prefixCls}-ghost`]: this.ghost
                     }
                 ];
@@ -103,13 +107,26 @@
         methods: {
             // Ctrl or CMD and click, open in new window when use `to`
             handleClickLink (event, new_window = false) {
-                this.$emit('click', event);
-
-                this.handleCheckClick(event, new_window);
+                // func 为父级下发的一个 Promise 函数，执行之后会把 Promise 返回值发送给父级
+                if (typeof this.func !== 'function') {
+                    this.$emit('click', event);
+                    this.handleCheckClick(event, new_window);
+                } else {
+                    this.selfLoading = true;
+                    this.func().then((res) => {
+                        this.selfLoading = false;
+                        this.$emit('on-done', res);
+                    });
+                }
             }
         },
         mounted () {
             this.showSlot = this.$slots.default !== undefined;
+        },
+        watch: {
+            loading(val) {
+                this.selfLoading = val;
+            }
         }
     };
 </script>

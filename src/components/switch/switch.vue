@@ -49,9 +49,8 @@
             name: {
                 type: String
             },
-            controllable: {
-                type: Boolean,
-                default: false,
+            func: {
+                type: Function,
             },
             // loading: {
             //     type: Boolean,
@@ -86,16 +85,28 @@
                 if (this.disabled || this.loading) {
                     return false;
                 }
-                if (this.controllable) {
-                    this.loading = true;
-                    this.$emit('on-change', this.loading);
-                } else {
+                // func 为父级下发的一个 Promise 函数，执行之后会把当前选中状态及 Promise 返回值发送给父级
+                if (typeof this.func !== 'function') {
                     const checked = this.currentValue === this.trueValue ? this.falseValue : this.trueValue;
-
                     this.currentValue = checked;
                     this.$emit('input', checked, event);
                     this.$emit('on-change', checked, event);
                     this.dispatch('FormItem', 'on-form-change', checked, event);
+                } else {
+                    this.loading = true;
+                    this.func().then((res) => {
+                        this.loading = false;
+                        if (res) {
+                            this.currentValue = !this.currentValue;
+                            this.$emit('input', this.currentValue, event);
+                            this.$emit('on-done', this.currentValue, res);
+                        } else {
+                            this.$emit('on-fail', res);
+                        }
+                    }).catch((err) => {
+                        this.loading = false;
+                        this.$emit('on-fail', err);
+                    });
                 }
             }
         },
