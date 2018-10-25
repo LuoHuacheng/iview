@@ -172,7 +172,7 @@ Modal.newInstance = properties => {
             remove () {
                 setTimeout(() => {
                     this.destroy();
-                }, 300);
+                }, 200);
             },
             destroy () {
                 this.$destroy();

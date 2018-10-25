@@ -75,7 +75,7 @@
                             this.popper = null;
                         }
                         this.popperStatus = false;
-                    }, 300);
+                    }, 200);
                 }
             },
             resetTransformOrigin() {

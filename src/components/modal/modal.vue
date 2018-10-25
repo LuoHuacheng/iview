@@ -330,7 +330,7 @@
                     this.timer = setTimeout(() => {
                         this.wrapShow = false;
                         this.removeScrollEffect();
-                    }, 300);
+                    }, 200);
                 } else {
                     if (this.timer) clearTimeout(this.timer);
                     this.wrapShow = true;
