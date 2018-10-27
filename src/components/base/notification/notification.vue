@@ -14,6 +14,7 @@
             :closable="notice.closable"
             :name="notice.name"
             :transition-name="notice.transitionName"
+            :on-click="notice.onClick"
             :on-close="notice.onClose">
         </Notice>
     </div>

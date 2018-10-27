@@ -1,17 +1,17 @@
 <template>
     <transition :name="transitionName" @enter="handleEnter" @leave="handleLeave">
         <div :class="classes" :style="styles">
-            <template v-if="type === 'notice'">
+            <div v-if="type === 'notice'" @click="handleClick">
                 <div :class="contentClasses" ref="content" v-html="content"></div>
                 <div :class="contentWithIcon">
                     <render-cell
                         :render="renderFunc"
                     ></render-cell>
                 </div>
-                <a :class="[baseClass + '-close']" @click="close" v-if="closable">
+                <a :class="[baseClass + '-close']" @click.stop="close" v-if="closable">
                     <i class="ivu-icon ivu-icon-ios-close"></i>
                 </a>
-            </template>
+            </div>
             <template v-if="type === 'message'">
                 <div :class="[baseClass + '-content']" ref="content">
                     <div :class="[baseClass + '-content-text']" v-html="content"></div>
@@ -77,6 +77,9 @@
             onClose: {
                 type: Function
             },
+            onClick: {
+                type: Function
+            },
             transitionName: {
                 type: String
             }
@@ -128,6 +131,10 @@
                     clearTimeout(this.closeTimer);
                     this.closeTimer = null;
                 }
+            },
+            handleClick () {
+                this.close();
+                this.onClick();
             },
             close () {
                 this.clearCloseTimer();
