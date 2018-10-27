@@ -34,6 +34,7 @@ function notice (type, options) {
     const noticeKey = options.name || `${prefixKey}${name}`;
     const onClick = options.onClick || function () {};
     const onClose = options.onClose || function () {};
+    const onClick = options.onClick || function () {};
     const render = options.render;
     // todo const btn = options.btn || null;
     const duration = (options.duration === 0) ? 0 : options.duration || defaultDuration;
@@ -82,7 +83,8 @@ function notice (type, options) {
         onClose: onClose,
         onClick: onClick,
         closable: true,
-        type: 'notice'
+        type: 'notice',
+        onClick: onClick,
     });
 }
 

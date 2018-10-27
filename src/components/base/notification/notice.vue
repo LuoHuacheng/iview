@@ -20,7 +20,7 @@
                             :render="renderFunc"
                         ></render-cell>
                     </div>
-                    <a :class="[baseClass + '-close']" @click="close" v-if="closable">
+                    <a :class="[baseClass + '-close']" @click.stop="close" v-if="closable">
                         <i class="ivu-icon ivu-icon-ios-close"></i>
                     </a>
                 </div>
@@ -155,7 +155,7 @@
                         el.style.paddingBottom = 0;
                     }
                 }
-            }
+            },
         },
         mounted () {
             this.clearCloseTimer();
