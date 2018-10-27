@@ -54,14 +54,16 @@
         }
     }
 
-    &-light &-inner{
-        width: 100%;
+    &-inner{
         background-color: #fff;
-        background-clip: padding-box;
         //border: 1px solid @border-color-split;
         border-radius: @border-radius-small;
-        box-shadow: @shadow-base;
         white-space: nowrap;
+    }
+    &-light &-inner{
+        background-color: #fff;
+        //border: 1px solid @border-color-split;
+        box-shadow: @shadow-base;
     }
 
     &-dark &-inner{
