@@ -110,7 +110,13 @@
             // default by css: 8px 16px
             padding: {
                 type: String
-            }
+            },
+            theme: {
+                validator (value) {
+                    return oneOf(value, ['dark', 'light', 'warning']);
+                },
+                default: 'light'
+            },
         },
         data () {
             return {
@@ -133,6 +139,7 @@
                 return [
                     `${prefixCls}-popper`,
                     {
+                        [`${prefixCls}-${this.theme}`]: !!this.theme,
                         [`${prefixCls}-confirm`]: this.transfer && this.confirm,
                         [`${this.popperClass}`]: !!this.popperClass
                     }
