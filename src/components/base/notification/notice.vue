@@ -1,6 +1,6 @@
 <template>
     <transition :name="transitionName" @enter="handleEnter" @leave="handleLeave">
-        <div :class="classes" :style="styles">
+        <div :class="classes" :style="styles" @click="handleClick">
             <template v-if="type === 'notice'">
                 <div :class="contentClasses" ref="content" v-html="content"></div>
                 <div :class="contentWithIcon">
@@ -8,7 +8,7 @@
                         :render="renderFunc"
                     ></render-cell>
                 </div>
-                <a :class="[baseClass + '-close']" @click="close" v-if="closable">
+                <a :class="[baseClass + '-close']" @click.stop="close" v-if="closable">
                     <i class="ivu-icon ivu-icon-ios-close"></i>
                 </a>
             </template>
@@ -20,7 +20,7 @@
                             :render="renderFunc"
                         ></render-cell>
                     </div>
-                    <a :class="[baseClass + '-close']" @click="close" v-if="closable">
+                    <a :class="[baseClass + '-close']" @click.stop="close" v-if="closable">
                         <i class="ivu-icon ivu-icon-ios-close"></i>
                     </a>
                 </div>
@@ -75,6 +75,9 @@
                 required: true
             },
             onClose: {
+                type: Function
+            },
+            onClick: {
                 type: Function
             },
             transitionName: {
@@ -148,6 +151,9 @@
                         el.style.paddingBottom = 0;
                     }
                 }
+            },
+            handleClick() {
+                this.onClick();
             }
         },
         mounted () {
