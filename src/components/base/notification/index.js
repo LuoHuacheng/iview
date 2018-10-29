@@ -18,6 +18,8 @@ Notification.newInstance = properties => {
 
     return {
         notice (noticeProps) {
+            // 同时只能弹出一个 message
+            if (document.getElementsByClassName('ivu-message-notice').length >= 1) return;
             notification.add(noticeProps);
         },
         remove (name) {
