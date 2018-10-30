@@ -1,7 +1,7 @@
 <template>
     <transition :name="transitionName" @enter="handleEnter" @leave="handleLeave">
-        <div :class="classes" :style="styles" @click="handleClick">
-            <template v-if="type === 'notice'">
+        <div :class="classes" :style="styles">
+            <div v-if="type === 'notice'" @click="handleClick">
                 <div :class="contentClasses" ref="content" v-html="content"></div>
                 <div :class="contentWithIcon">
                     <render-cell
@@ -11,7 +11,7 @@
                 <a :class="[baseClass + '-close']" @click.stop="close" v-if="closable">
                     <i class="ivu-icon ivu-icon-ios-close"></i>
                 </a>
-            </template>
+            </div>
             <template v-if="type === 'message'">
                 <div :class="[baseClass + '-content']" ref="content">
                     <div :class="[baseClass + '-content-text']" v-html="content"></div>
@@ -132,6 +132,10 @@
                     this.closeTimer = null;
                 }
             },
+            handleClick () {
+                this.close();
+                this.onClick();
+            },
             close () {
                 this.clearCloseTimer();
                 this.onClose();
@@ -152,9 +156,6 @@
                     }
                 }
             },
-            handleClick() {
-                this.onClick();
-            }
         },
         mounted () {
             this.clearCloseTimer();
