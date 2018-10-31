@@ -80,6 +80,12 @@
             },
             func: {
                 type: Function
+            },
+            info: {
+                type: Object,
+                default() {
+                    return {};
+                }
             }
         },
         data () {
@@ -115,7 +121,7 @@
                     this.selfLoading = true;
                     this.func().then((res) => {
                         this.selfLoading = false;
-                        this.$emit('on-done', res);
+                        this.$emit('on-done', res, this.info);
                     });
                 }
             }
