@@ -219,6 +219,7 @@
         methods: {
             close () {
                 this.visible = false;
+                document.body.style.overflow = '';
                 this.$emit('input', false);
                 this.$emit('on-cancel');
             },
