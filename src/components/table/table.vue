@@ -30,8 +30,9 @@
                     <tbody>
                         <tr>
                             <td :style="{'height':bodyStyle.minHeight,'width':`${this.headerWidth}px`}">
-                                <span v-html="localeNoDataText" v-if="!data || data.length === 0"></span>
-                                <span v-html="localeNoFilteredDataText" v-else></span>
+                                <Icon type="ios-paper-outline" size="36" />
+                                <p v-html="localeNoDataText" v-if="!data || data.length === 0"></p>
+                                <p v-html="localeNoFilteredDataText" v-else></p>
                             </td>
                         </tr>
                     </tbody>
@@ -392,7 +393,7 @@
                     columnWidth = parseInt(usableWidth / usableLength);
                 }
 
-                    
+
                 for (let i = 0; i < this.cloneColumns.length; i++) {
                     const column = this.cloneColumns[i];
                     let width = columnWidth + (column.minWidth?column.minWidth:0);
@@ -410,7 +411,7 @@
                             else if (column.maxWidth < width){
                                 width = column.maxWidth;
                             }
-                            
+
                             if (usableWidth>0) {
                                 usableWidth -= width - (column.minWidth?column.minWidth:0);
                                 usableLength--;
@@ -457,7 +458,7 @@
 
                     }
                 }
-                
+
                 this.tableWidth = this.cloneColumns.map(cell => cell._width).reduce((a, b) => a + b, 0) + (this.showVerticalScrollBar?this.scrollBarWidth:0) + 1;
                 this.columnsWidth = columnsWidth;
                 this.fixedHeader();
@@ -560,7 +561,7 @@
                 }
                 this.$emit('on-selection-change', selection);
             },
-            
+
             fixedHeader () {
                 const titleHeight = parseInt(getStyle(this.$refs.title, 'height')) || 0;
                 const headerHeight = parseInt(getStyle(this.$refs.header, 'height')) || 0;
@@ -598,7 +599,7 @@
 
                     this.showHorizontalScrollBar = bodyEl.offsetWidth < bodyContentEl.offsetWidth + (this.showVerticalScrollBar?this.scrollBarWidth:0);
                     this.showVerticalScrollBar = this.bodyHeight? bodyHeight - (this.showHorizontalScrollBar?this.scrollBarWidth:0) < bodyContentHeight : false;
-                    
+
                     if(this.showVerticalScrollBar){
                         bodyEl.classList.add(this.prefixCls +'-overflowY');
                     }else{
@@ -609,7 +610,7 @@
                     }else{
                         bodyEl.classList.remove(this.prefixCls +'-overflowX');
                     }
-                } 
+                }
             },
 
             hideColumnFilter () {
