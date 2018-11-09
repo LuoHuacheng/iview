@@ -24,6 +24,7 @@
                 :value="currentValue"
                 :number="number"
                 :autofocus="autofocus"
+                :tabindex="tabindex"
                 @keyup.enter="handleEnter"
                 @keyup="handleKeyup"
                 @keypress="handleKeypress"
@@ -137,6 +138,9 @@
             autofocus: {
                 type: Boolean,
                 default: false
+            },
+            tabindex: {
+                type: Number,
             },
             spellcheck: {
                 type: Boolean,
