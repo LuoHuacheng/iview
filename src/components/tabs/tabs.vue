@@ -110,9 +110,6 @@
             };
         },
         computed: {
-            direction() {
-                return document.documentElement.dir;
-            },
             classes () {
                 return [
                     `${prefixCls}`,
