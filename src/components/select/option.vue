@@ -58,8 +58,11 @@
             showLabel () {
                 return (this.label) ? this.label : this.value;
             },
-            optionLabel(){
-                return this.label || (this.$el && this.$el.textContent);
+            optionLabel: {
+                cache: false,
+                get() {
+                    return this.label || (this.$el && this.$el.textContent);
+                }
             }
         },
         methods: {
