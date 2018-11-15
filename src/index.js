@@ -13,7 +13,7 @@ import Card from './components/card';
 // import Cascader from './components/cascader';
 import Cell from './components/cell';
 import Checkbox from './components/checkbox';
-// import Circle from './components/circle';
+import Circle from './components/circle';
 import Collapse from './components/collapse';
 // import ColorPicker from './components/color-picker';
 import Content from './components/content';
@@ -139,7 +139,7 @@ const components = {
 const iview = {
     ...components,
     iButton: Button,
-    // iCircle: Circle,
+    iCircle: Circle,
     iCol: Col,
     iContent: Content,
     iForm: Form,
@@ -186,7 +186,7 @@ const API = {
     locale: locale.use,
     i18n: locale.i18n,
     install,
-    // Circle,
+    Circle,
     Switch,
     ...components
 };
