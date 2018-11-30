@@ -13,7 +13,7 @@
         <button type="button" :class="arrowClasses" class="right" @click="arrowEvent(1)">
             <Icon type="ios-arrow-forward"></Icon>
         </button>
-        <ul :class="dotsClasses">
+        <ul :class="dotsClasses" v-if="slides.length > 1">
             <template v-for="n in slides.length">
                 <li :class="[n - 1 === currentIndex ? prefixCls + '-active' : '']"
                     @click="dotsEvent('click', n - 1)"
