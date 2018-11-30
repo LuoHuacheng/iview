@@ -9,7 +9,7 @@ import Badge from './components/badge';
 import Breadcrumb from './components/breadcrumb';
 import Button from './components/button';
 import Card from './components/card';
-// import Carousel from './components/carousel';
+import Carousel from './components/carousel';
 // import Cascader from './components/cascader';
 import Cell from './components/cell';
 import Checkbox from './components/checkbox';
@@ -72,8 +72,8 @@ const components = {
     Button,
     ButtonGroup: Button.Group,
     Card,
-    // Carousel,
-    // CarouselItem: Carousel.Item,
+    Carousel,
+    CarouselItem: Carousel.Item,
     // Cascader,
     Cell,
     CellGroup: Cell.Group,
