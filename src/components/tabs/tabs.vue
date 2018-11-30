@@ -14,8 +14,8 @@
                     <span :class="[prefixCls + '-nav-next', scrollable ? '' : prefixCls + '-nav-scroll-disabled']" @click="scrollNext"><Icon type="ios-arrow-forward"></Icon></span>
                     <div ref="navScroll" :class="[prefixCls + '-nav-scroll']">
                         <div ref="nav" :class="[prefixCls + '-nav']" class="nav-text"  :style="navStyle">
-                            <div :class="barClasses" :style="barStyle"></div>
                             <div :class="tabCls(item)" v-for="(item, index) in navList" @click="handleChange(index)">
+                                <div :class="barClasses"></div>
                                 <Icon v-if="item.icon !== ''" :type="item.icon"></Icon>
                                 <Render v-if="item.labelType === 'function'" :render="item.label"></Render>
                                 <template v-else>{{ item.label }}</template>
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div :class="contentClasses" :style="contentStyle" ref="panes"><slot></slot></div>
+        <div :class="contentClasses" ref="panes"><slot></slot></div>
     </div>
 </template>
 <script>
@@ -153,21 +153,6 @@
                 }
                 return style;
             },
-            barStyle () {
-                let style = {
-                    visibility: 'hidden',
-                    width: `${this.barWidth}px`
-                };
-                if (this.type === 'line') style.visibility = 'visible';
-                const offset = document.documentElement.dir === 'ltr' ? this.barOffset : -this.barOffset;
-                if (this.animated) {
-                    style.transform = `translate3d(${offset}px, 0px, 0px)`;
-                } else {
-                    style.left = `${offset}px`;
-                }
-
-                return style;
-            }
         },
         methods: {
             getTabs () {
