@@ -29,7 +29,6 @@
             <slot name="input">
                 <input type="hidden" :name="name" :value="publicValue">
                 <select-head
-                    :filterable="filterable"
                     :multiple="multiple"
                     :values="values"
                     :clearable="canBeCleared"
@@ -56,6 +55,27 @@
                 :data-transfer="transfer"
                 v-transfer-dom
             >
+                <ul v-if="filterable">
+                    <li>
+                        <select-filter
+                            :filterable="filterable"
+                            :multiple="multiple"
+                            :values="values"
+                            :clearable="canBeCleared"
+                            :disabled="disabled"
+                            :remote="remote"
+                            :input-element-id="elementId"
+                            :initial-label="initialLabel"
+                            :placeholder="placeholder"
+                            :query-prop="query"
+
+                            @on-query-change="onQueryChange"
+                            @on-input-focus="isFocused = true"
+                            @on-input-blur="isFocused = false"
+                            @on-clear="clearSingleSelect"
+                        />
+                    </li>
+                </ul>
                 <ul v-show="showNotFoundLabel" :class="[prefixCls + '-not-found']"><li>{{ localeNotFoundText }}</li></ul>
                 <ul :class="prefixCls + '-dropdown-list'">
                     <functional-options
@@ -78,6 +98,7 @@
     import Emitter from '../../mixins/emitter';
     import Locale from '../../mixins/locale';
     import SelectHead from './select-head.vue';
+    import SelectFilter from './select-filter.vue';
     import FunctionalOptions from './functional-options.vue';
 
     const prefixCls = 'ivu-select';
@@ -140,7 +161,7 @@
     export default {
         name: 'iSelect',
         mixins: [ Emitter, Locale ],
-        components: { FunctionalOptions, Drop, SelectHead },
+        components: { FunctionalOptions, Drop, SelectHead, SelectFilter },
         directives: { clickOutside, TransferDom },
         props: {
             value: {

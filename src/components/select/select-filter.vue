@@ -11,10 +11,10 @@
         <input
             :id="inputElementId"
             type="text"
-            v-if="false"
+            v-if="filterable"
             v-model="query"
             :disabled="disabled"
-            :class="[prefixCls + '-input']"
+            :class="[prefixCls + '-input', prefixCls + '-filter']"
             :placeholder="showPlaceholder ? localePlaceholder : ''"
             :style="inputStyle"
             autocomplete="off"
@@ -25,8 +25,8 @@
             @blur="onInputFocus"
 
             ref="input">
-        <Icon type="ios-close-circle" :class="[prefixCls + '-arrow']" v-if="resetSelect" @click.native.stop="onClear"></Icon>
-        <Icon type="ios-arrow-down" :class="[prefixCls + '-arrow']" v-if="!resetSelect && !remote && !disabled"></Icon>
+        <Icon type="md-search" class="filter-search"/>
+        <Icon type="md-close-circle" class="filter-close" @click="handleDeleteQuery"/>
     </div>
 </template>
 <script>
@@ -37,11 +37,15 @@
     const prefixCls = 'ivu-select';
 
     export default {
-        name: 'iSelectHead',
+        name: 'iSelectFilter',
         mixins: [ Emitter, Locale ],
         components: { Icon },
         props: {
             disabled: {
+                type: Boolean,
+                default: false
+            },
+            filterable: {
                 type: Boolean,
                 default: false
             },
@@ -82,7 +86,6 @@
                 inputLength: 20,
                 remoteInitialLabel: this.initialLabel,
                 preventRemoteCall: false,
-                filterable: false,
             };
         },
         computed: {
@@ -165,6 +168,9 @@
             },
             onClear(){
                 this.$emit('on-clear');
+            },
+            handleDeleteQuery() {
+                this.query = '';
             }
         },
         watch: {
@@ -195,3 +201,30 @@
         }
     };
 </script>
+
+<style lang="less" scoped>
+    .ivu-select {
+        .ivu-select-filter {
+            margin: 16px 20px;
+            padding-left: 40px;
+            border: 1px solid #5C95EA;
+            width: calc(~'100% - 40px');
+            cursor: auto;
+            border-radius: 3px;
+            text-align: left;
+        }
+        .filter-search {
+            position: absolute;
+            left: 32px;
+            top: 33px;
+            font-size: 16px;
+        }
+        .filter-close {
+            cursor: pointer;
+            position: absolute;
+            right: 32px;
+            top: 33px;
+            font-size: 16px;
+        }
+    }
+</style>

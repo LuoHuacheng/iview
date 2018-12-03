@@ -121,9 +121,10 @@
                 };
             },
             copyTrackStyles () {
+                const offSet = document.documentElement.dir === 'rtl' ? this.trackCopyOffset : -this.trackCopyOffset;
                 return {
                     width: `${this.trackWidth}px`,
-                    transform: `translate3d(${-this.trackCopyOffset}px, 0px, 0px)`,
+                    transform: `translate3d(${offSet}px, 0px, 0px)`,
                     transition: `transform 500ms ${this.easing}`,
                     position: 'absolute',
                     top: 0
