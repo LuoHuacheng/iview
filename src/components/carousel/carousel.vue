@@ -1,5 +1,5 @@
 <template>
-    <div :class="classes">
+    <div :class="classes" ref="carousel">
         <button type="button" :class="arrowClasses" class="left" @click="arrowEvent(-1)">
             <Icon type="ios-arrow-back"></Icon>
         </button>
@@ -113,9 +113,10 @@
                 ];
             },
             trackStyles () {
+                const offSet = document.documentElement.dir === 'rtl' ? this.trackOffset : -this.trackOffset;
                 return {
                     width: `${this.trackWidth}px`,
-                    transform: `translate3d(${-this.trackOffset}px, 0px, 0px)`,
+                    transform: `translate3d(${offSet}px, 0px, 0px)`,
                     transition: `transform 500ms ${this.easing}`
                 };
             },
@@ -274,12 +275,15 @@
                 }
             },
             setAutoplay () {
-                window.clearInterval(this.timer);
+                this.clearTimer();
                 if (this.autoplay) {
                     this.timer = window.setInterval(() => {
                         this.add(1);
                     }, this.autoplaySpeed);
                 }
+            },
+            clearTimer () {
+                window.clearInterval(this.timer);
             },
             updateOffset () {
                 this.$nextTick(() => {
@@ -319,6 +323,8 @@
             this.setAutoplay();
 //            window.addEventListener('resize', this.handleResize, false);
             on(window, 'resize', this.handleResize);
+            on(this.$refs.carousel, 'mouseover', this.clearTimer);
+            on(this.$refs.carousel, 'mouseout', this.setAutoplay);
         },
         beforeDestroy () {
 //            window.removeEventListener('resize', this.handleResize, false);
