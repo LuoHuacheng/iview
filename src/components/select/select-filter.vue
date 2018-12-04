@@ -207,11 +207,17 @@
         .ivu-select-filter {
             margin: 16px 20px;
             padding-left: 40px;
-            border: 1px solid #5C95EA;
+            border: 1px solid #EEE;
             width: calc(~'100% - 40px');
             cursor: auto;
             border-radius: 3px;
             text-align: left;
+            transition: all .2s;
+            background: #FAFAFA;
+            &:active, &:focus, &:hover {
+                border: 1px solid #5C95EA;
+                background: #fff;
+            }
         }
         .filter-search {
             position: absolute;
