@@ -23445,6 +23445,7 @@ function confirm(options) {
 
     options.onRemove = function () {
         modalInstance = null;
+        document.body.style = '';
     };
 
     instance.show(options);
@@ -23498,6 +23499,8 @@ _confirm2.default.remove = function () {
     var instance = getModalInstance();
 
     instance.remove();
+
+    document.body.style = '';
 };
 
 exports.default = _confirm2.default;
