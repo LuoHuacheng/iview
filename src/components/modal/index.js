@@ -19,6 +19,7 @@ function confirm (options) {
 
     options.onRemove = function () {
         modalInstance = null;
+        document.body.style = '';
     };
 
     instance.show(options);
@@ -62,6 +63,8 @@ Modal.remove = function () {
     const instance = getModalInstance();
 
     instance.remove();
+
+    document.body.style = '';
 };
 
 export default Modal;
