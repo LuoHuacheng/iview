@@ -24405,7 +24405,8 @@ var prefixKey = 'ivu_message_key_';
 
 var defaults = {
     top: 24,
-    duration: 1.5
+    duration: 1.5,
+    closable: false
 };
 
 var messageInstance = void 0;
@@ -24434,7 +24435,7 @@ function notice() {
     var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaults.duration;
     var type = arguments[2];
     var onClose = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : function () {};
-    var closable = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+    var closable = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : defaults.closable;
     var render = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : function () {};
 
     var iconType = iconTypes[type];
@@ -24497,6 +24498,7 @@ exports.default = {
         if (options.duration || options.duration === 0) {
             defaults.duration = options.duration;
         }
+        defaults.closable = options.closable;
     },
     destroy: function destroy() {
         var instance = getMessageInstance();

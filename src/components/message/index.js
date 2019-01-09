@@ -6,7 +6,8 @@ const prefixKey = 'ivu_message_key_';
 
 const defaults = {
     top: 24,
-    duration: 1.5
+    duration: 1.5,
+    closable: false,
 };
 
 let messageInstance;
@@ -30,7 +31,7 @@ function getMessageInstance () {
     return messageInstance;
 }
 
-function notice (content = '', duration = defaults.duration, type, onClose = function () {}, closable = false, render = function () {}) {
+function notice (content = '', duration = defaults.duration, type, onClose = function () {}, closable = defaults.closable, render = function () {}) {
     const iconType = iconTypes[type];
 
     // if loading
@@ -98,6 +99,7 @@ export default {
         if (options.duration || options.duration === 0) {
             defaults.duration = options.duration;
         }
+        defaults.closable = options.closable;
     },
     destroy () {
         let instance = getMessageInstance();
