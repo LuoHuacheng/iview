@@ -4,6 +4,7 @@
 .selectDropDown{
     width: auto;
     padding: 0;
+    border-radius: 2px;
     white-space: nowrap;
     overflow: visible;
 }
@@ -74,7 +75,7 @@
         .selectDropDown();
     }
 
-    .select-item(@cascader-prefix-cls, @cascader-item-prefix-cls);
+    .select-item(@cascader-prefix-cls, @cascader-item-prefix-cls, 40px);
     .ivu-select-item span{
         color: @error-color;
     }
@@ -103,10 +104,10 @@
 
     &-menu{
         display: inline-block;
-        min-width: 100px;
-        height: 180px;
+        min-width: 80px;
+        max-height: 240px;
         margin: 0;
-        padding: 5px 0 !important;
+        // padding: 5px 0 !important;
         vertical-align: top;
         list-style: none;
         border-right: 1px solid @border-color-split;
@@ -125,8 +126,20 @@
 
         & &-item{
             position: relative;
+            display: flex;
+            align-items: center;
             padding-right: 24px;
             transition: all @transition-time @ease-in-out;
+            border-bottom: 1px solid #f2f2f2;
+            &:last-child {
+                border-bottom: none;
+            }
+
+            span {
+                display: inline-block;
+                min-width: 64px;
+                height: 100%;
+            }
 
             i{
                 font-size: @font-size-small;
@@ -146,7 +159,7 @@
 .@{cascader-prefix-cls}-transfer{
     z-index: @zindex-transfer;
     .selectDropDown();
-    .select-item(@cascader-prefix-cls, @cascader-item-prefix-cls);
+    .select-item(@cascader-prefix-cls, @cascader-item-prefix-cls, 40px);
     .ivu-select-item span{
         color: @error-color;
     }

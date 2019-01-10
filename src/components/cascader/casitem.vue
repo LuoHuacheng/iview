@@ -1,6 +1,8 @@
 <template>
     <li :class="classes">
-        <img v-if="data.icon" :src="data.icon" :alt="data.label">
+        <span v-if="data.icon">
+            <img height="18" :src="data.icon" :alt="data.label">
+        </span>
         {{ data.label }}
         <i v-if="showArrow" class="ivu-icon ivu-icon-ios-arrow-forward"></i>
         <i v-if="showLoading" class="ivu-icon ivu-icon-ios-loading ivu-load-loop"></i>
