@@ -1,9 +1,9 @@
 <template>
     <li :class="classes">
-        <span v-if="data.icon">
+        <span v-if="data.icon" class="icon">
             <img height="18" :src="data.icon" :alt="data.label">
         </span>
-        {{ data.label }}
+        <span class="text">{{ data.label }}</span>
         <i v-if="showArrow" class="ivu-icon ivu-icon-ios-arrow-forward"></i>
         <i v-if="showLoading" class="ivu-icon ivu-icon-ios-loading ivu-load-loop"></i>
     </li>

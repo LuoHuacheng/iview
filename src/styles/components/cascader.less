@@ -128,17 +128,27 @@
             position: relative;
             display: flex;
             align-items: center;
-            padding-right: 24px;
+            padding: 10px 24px;
+            height: auto;
+            min-height: 40px;
             transition: all @transition-time @ease-in-out;
             border-bottom: 1px solid #f2f2f2;
             &:last-child {
                 border-bottom: none;
             }
 
-            span {
-                display: inline-block;
-                min-width: 64px;
+            span.icon {
+                display: flex;
+                align-items: center;
+                min-width: 60px;
                 height: 100%;
+            }
+            span.text {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                line-height: 16px;
+                white-space: normal;
             }
 
             i{
