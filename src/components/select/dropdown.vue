@@ -92,6 +92,10 @@
                 if (this.$parent.$options.name === 'iSelect') {
                     this.popper.popper.style.left = '1px';
                 }
+                if (this.$parent.$options.name === 'Cascader' && document.documentElement.dir === 'rtl') {
+                    this.popper.popper.style.left = 'auto';
+                    this.popper.popper.style.right = '0px';
+                }
             }
         },
         created () {
