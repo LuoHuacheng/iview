@@ -202,7 +202,7 @@
     };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
     .ivu-select {
         .ivu-select-filter {
             margin: 16px 20px;
