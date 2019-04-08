@@ -201,36 +201,3 @@
         }
     };
 </script>
-
-<style lang="less">
-    .ivu-select {
-        .ivu-select-filter {
-            margin: 16px 20px;
-            padding-left: 40px;
-            border: 1px solid #EEE;
-            width: calc(~'100% - 40px');
-            cursor: auto;
-            border-radius: 3px;
-            text-align: left;
-            transition: all .2s;
-            background: #FAFAFA;
-            &:active, &:focus, &:hover {
-                border: 1px solid #5C95EA;
-                background: #fff;
-            }
-        }
-        .filter-search {
-            position: absolute;
-            left: 32px;
-            top: 33px;
-            font-size: 16px;
-        }
-        .filter-close {
-            cursor: pointer;
-            position: absolute;
-            right: 32px;
-            top: 33px;
-            font-size: 16px;
-        }
-    }
-</style>
